@@ -1,8 +1,8 @@
 ---
 title: Vehicle Lateral Control ; Pure Pursuit
-description: about Pure pursuit algorithm
-date: 2024-12-29 11:33:00 +0800
-categories: [Blogging, Autonomous driving control]
+description: Pure pursuit controller
+date: 2024-12-24 18:00:00 +0800
+categories: [Study, Autonomous driving control]
 tags: [autonomous driving, vehicle control, pure pursuit]
 pin: true
 math: true
@@ -11,7 +11,10 @@ mermaid: true
 
 <br>
 
-횡방향 제어 이론에 대해 학습한다.
+횡방향 제어 이론에 대해 학습한다.<br>
+&emsp;**- Pure Pursuit**<br>
+&emsp;- Stanley<br>
+&emsp;- MPC
 
 <br>
 
@@ -93,6 +96,7 @@ $$
 
 #### 횡방향 오차 e
 위 관계식을 오차의 관점에서 살펴보자. 횡방향 오차 $$e$$는 차량이 목표 경로에서부터 수직으로 떨어져 있는 거리로, 차량이 목표 경로를 주행할 때 줄여 나가고자 하는 오차를 의미한다. 이는 Pure pursuit 방식에서 전방주시거리 $$l_d$$에서의 오차다.
+
 ![](https://velog.velcdn.com/images/nnoa/post/9899a451-41ca-432f-9df3-6a15409ce70e/image.png)
 
 삼각함수 공식에 의해 $$\alpha$$와 $$l_d$$로 표현하면
@@ -128,10 +132,7 @@ $$
 
 <br>
 <br>
-<br>
 
-### References
-[[1] Yan Ding, "Three Methods of Vehicle Lateral Control: Pure Pursuit, Stanley and MPC", Medium](https://dingyan89.medium.com/three-methods-of-vehicle-lateral-control-pure-pursuit-stanley-and-mpc-db8cc1d32081) 
-
-[2] H-Mobility Class 자율주행 트랙_자율주행 자동차 제어 기술 (심화)_M06. 횡방향 제어 ADAS 심화 (Pure Pursuit, Stanley 기법)_13. Pure Pursuit 기법
-
+## References
+[1] [Yan Ding, "Three Methods of Vehicle Lateral Control: Pure Pursuit, Stanley and MPC", Medium](https://dingyan89.medium.com/three-methods-of-vehicle-lateral-control-pure-pursuit-stanley-and-mpc-db8cc1d32081) <br>
+[2] [MathWorks, "Pure Pursuit Controller"](https://www.mathworks.com/help/nav/ug/pure-pursuit-controller.html)

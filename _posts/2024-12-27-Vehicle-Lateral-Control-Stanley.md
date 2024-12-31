@@ -1,13 +1,22 @@
 ---
 title: Vehicle Lateral Control ; Stanley
-description: about Stanley algorithm
-date: 2024-12-29 11:33:00 +0800
-categories: [Blogging, Autonomous driving control]
+description: Stenley Controller
+date: 2024-12-27 18:00:00 +0800
+categories: [Study, Autonomous driving control]
 tags: [autonomous driving, vehicle control, stanley]
 pin: true
 math: true
 mermaid: true
 ---
+
+<br>
+
+횡방향 제어 이론에 대해 학습한다.<br>
+&emsp;- Pure Pursuit<br>
+&emsp;- **Stanley**<br>
+&emsp;- MPC
+
+<br>
 
 ## 1. Stanley
 
