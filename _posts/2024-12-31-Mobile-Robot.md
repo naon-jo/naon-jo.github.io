@@ -1,17 +1,19 @@
 ---
-title: Mobile Robot
+title: "Mobile Robot"
 description: 
 date: 2024-12-31 18:00:00 +0800
-categories: [Research]
+categories: [Study, Mobile Robot]
 tags: [mobile robot, autonomous driving]
 pin: true
 math: true
 mermaid: true
+image:
+    path: "https://www.hyundai.co.kr/image/upload/asset_library/MDA00000000000014299/0b05ebc2e0be47bab877daa94c731de6.png"
 ---
 
 <br>
 
-## 실외 모바일 로봇
+## 1. 실외 모바일 로봇
 
 실외 모바일 로봇을 주제로 기술 조사
 - 사례 : 현대 로보틱스랩의 MobED
@@ -20,21 +22,23 @@ mermaid: true
 
 <br>
 
-## 국내외 사례
+## 2. 국내외 사례
 
 ### 모베드(MobED, Mobile Eccentric Droid)
+
+![](https://www.hyundai.co.kr/image/upload/asset_library/MDA00000000000014299/0b05ebc2e0be47bab877daa94c731de6.png){: width="972" height="590" .w-50 .right}
 
 대부분의 모바일 플랫폼은 매우 간단한 이동 구현에 초점을 맞추고 있기 때문에 이동에 한계가 있다. 간단한 이동 능력을 가진 모바일 플랫폼은 한정된 조건에서만 활용이 가능하다.<br>
 현대 로보틱스 랩의 MobED는 이러한 한계를 극복하는 신개념 모바일 플랫폼이다. 단순히 바퀴 달린 운송수단의 개념을 넘어, 역동적이며 안정적인 주행 성능을 갖춘 완전히 새로운 모바일 로봇이다.<br>
 <br>
-![](https://www.hyundai.co.kr/image/upload/asset_library/MDA00000000000014299/0b05ebc2e0be47bab877daa94c731de6.png)
+
 
 
 <br>
 
-## 주요 기술
+## 3. 주요 기술
 
-### 1. SW
+### 3.1. SW
 
 #### LiDAR SLAM 및 Visual SLAM
 다양한 센서 융합을 통한 state estimation 기능과 정밀 측위 알고리즘<br>
@@ -51,7 +55,7 @@ Kinematics/Dynamics/Optimazation/State Estimation 기반 알고리즘<br>
 
 <br>
 
-### 2. HW 
+### 3.2. HW 
 
 #### 편심 매커니즘 기반 엑센트릭 휠(Eccentric Wheel)
 인-휠 모터와 편심축 적용으로 구동, 제동, 조향<br>
@@ -69,37 +73,36 @@ Kinematics/Dynamics/Optimazation/State Estimation 기반 알고리즘<br>
 
 <br>
 
-## Related Research
+## 4. Related Research
 
 ### DynaVINS: A Visual-Inertial SLAM for Dynamic Environments
-date: 2022<br>
-Publisher: IEEE RA-L (Robotics and Automation Letters) &ensp;[원문보기](https://ieeexplore.ieee.org/document/9870851) &emsp;[Github](https://github.com/url-kaist/dynaVINS)<br>
-Authors: Seungwon Song; Hyungtae Lim; Alex Junho Lee; Hyun Myung<br>
 
-동적 환경을 위한 robust visual-inertial state estimator 알고리즘에 관한 연구<br>
+Authors: Seungwon Song, Hyungtae Lim, Alex Junho Lee, Hyun Myung<br>
+Publisher: [IEEE](https://ieeexplore.ieee.org/document/9870851) RA-L (Robotics and Automation Letters)  <br>
+Published: 2022<br>
 
-**요약**
-- 동적 객체와 일시적으로 정적인 객체는 false positive loop closing 문제를 유발한다.<br>
-- 이를 해결하기 위해 동적 및 일시적으로 정적인 객체에 대해 강력한 VI-SLAM 프레임워크인 DynaVINS를 제안한다.<br>
-&emsp;1. IMU preintegration으로 추정된 pose prior를 활용하여 동적 객체의 특징을 거부할 수 있는 robust bundle adjustment(BA)를 제안한다.<br>
-&emsp;2. 루프가 닫힐 때 일시적으로 정적이 되는 객체의 영향을 줄이기 위해 키프레임 그룹화와 다중 가설 기반 제약 조건 그룹화 방법을 제안한다.
+동적 환경을 위한 robust visual-inertial state estimator 알고리즘에 관한 연구 &ensp;[Github](https://github.com/url-kaist/dynaVINS)<br>
+- 동적 객체와 일시적으로 정적인 객체는 false positive loop closing 문제를 유발한다.
+- 이를 해결하기 위해 동적 및 일시적으로 정적인 객체에 대해 로버스트한 VI-SLAM 프레임워크인 DynaVINS를 제안한다.
+1. IMU preintegration으로 추정된 pose prior를 활용하여 동적 객체의 특징을 거부할 수 있는 robust bundle adjustment(BA)를 제안한다.
+2. 루프가 닫힐 때 일시적으로 정적이 되는 객체의 영향을 줄이기 위해 키프레임 그룹화와 다중 가설 기반 제약 조건 그룹화 방법을 제안한다.
 
-
-### Fast, Lightweight, and Robust Path Planning for Low-power Embedded Environments 
-date: 2021<br>
-Publisher: ICROS &emsp;[원문보기](https://www.dbpia.co.kr/journal/articleDetail?nodeId=NODE11024490)<br>
-Authors: Hwanhee Lee, Ilyong Yoon, Sangwoo Kim, Dong Jin Hyun<br>
 <br>
-저전력 임베디드 환경에서 빠르고 가벼우면서도 로버스트한 경로 계획 알고리즘에 관한 연구<br>
 
-**요약**
-- 저전력 임베디드 환경에서 안전한 로봇 내비게이션을 위해 비정형 환경에서 장애물을 즉시 회피하는 경로 계획 알고리즘을 제안한다.<br>
-- 제안하는 방법은 샘플링 기반 방법의 변형으로, 다음과 같은 단계로 구성된다.<br> 
-&emsp;1단계)  대략적이고 빠르게 초기 경로를 찾는 단계 <br>
-&emsp;2단계)  초기 경로를 강력하게 단축하는 단계<br>
-- 실험 결과, 평균 반복 횟수와 평균 계산 시간, 평균 경로 길이 모두 RRT*, Informed RRT*보다 나은 성능이며 저전력 임베디드에서 허용 가능한 수준임.
+### Fast, Lightweight, and Robust Path Planning for Low-power Embedded Environments
 
+Authors : Hwanhee Lee, Ilyong Yoon, Sangwoo Kim, and Dong Jin Hyun<br>
+Journal : 2021 The 21st International Conference on Control, Automation and Systems [(ICCAS 2021)](https://www.dbpia.co.kr/journal/articleDetail?nodeId=NODE11024490)<br>
+Publisher : ICROS<br>
+Published : 2021.10<br>
 
+저전력 임베디드 환경에서의 빠르고 가볍고 로버스트한 경로 계획 알고리즘에 관한 연구
+- 저전력 임베디드 환경에서 안전한 로봇 내비게이션을 위한 빠르고 가벼우면서도 로버스트한 경로 계획 알고리즘을 제안한다.
+- 제안하는 방법은 다음과 같은 단계로 구성된다.
+1. 대략적이고 빠르게 초기 경로를 찾는 단계
+2. 초기 경로를 로버스트하게 단축하는 단계
+- 실험 결과, 제안한 알고리즘은 평균 반복 횟수와 평균 계산 시간, 평균 경로 길이 모두 RRT*, Informed RRT*보다 나은 성능을 보이며 저전력 임베디드에서 허용 가능한 수준을 보였다.
 
-### DnL <br>
-[link](https://robotics.hyundai.com/projects/research/view.do?seq=14)
+[[Review] Fast, Lightweight, and Robust Path Planning for Low-power Embedded Environments](http://127.0.0.1:4000/posts/Review-Fast,-Lightweight,-and-Robust-Path-Planning-for-Low-power-Embedded-Environments/)
+
+<br>

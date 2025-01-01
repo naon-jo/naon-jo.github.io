@@ -1,12 +1,14 @@
 ---
-title: Vehicle Lateral Control ; Pure Pursuit
+title: "Vehicle Lateral Control : Pure Pursuit"
 description: Pure pursuit controller
 date: 2024-12-24 18:00:00 +0800
-categories: [Study, Autonomous driving control]
+categories: [Study, Planning and Control]
 tags: [autonomous driving, vehicle control, pure pursuit]
 pin: true
 math: true
 mermaid: true
+image:
+    path: "https://velog.velcdn.com/images/nnoa/post/fcc2ec7a-aca2-4e5b-afb9-dccbdf448581/image.png"
 ---
 
 <br>
@@ -113,6 +115,7 @@ $$
 
 이다.
 자동차의 조향각 $$\delta$$는 곡률 $$\kappa$$에 의해 결정되며, 이 곡률 $$\kappa$$는 오차 $$e$$에 상수값 $$\frac{2}{l_d ^2}$$이 곱해진 형태로 결정된다. 즉 **비례 제어기**가 설계된 것이며, 이 상수는 **비례 이득**이 된다.
+
 <br>
 
 전방주시거리 $$l_d$$는 제어기 설계 시 설정해주는 튜닝 파라미터로써 제어기의 성능을 결정한다.
@@ -136,3 +139,5 @@ $$
 ## References
 [1] [Yan Ding, "Three Methods of Vehicle Lateral Control: Pure Pursuit, Stanley and MPC", Medium](https://dingyan89.medium.com/three-methods-of-vehicle-lateral-control-pure-pursuit-stanley-and-mpc-db8cc1d32081) <br>
 [2] [MathWorks, "Pure Pursuit Controller"](https://www.mathworks.com/help/nav/ug/pure-pursuit-controller.html)
+
+<br>

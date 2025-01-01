@@ -1,8 +1,8 @@
 ---
-title: Vehicle Lateral Control ; Stanley
+title: "Vehicle Lateral Control : Stanley"
 description: Stenley Controller
 date: 2024-12-27 18:00:00 +0800
-categories: [Study, Autonomous driving control]
+categories: [Study, Planning and Control]
 tags: [autonomous driving, vehicle control, stanley]
 pin: true
 math: true
@@ -50,15 +50,18 @@ mermaid: true
 
 #### (1) 헤딩 오차 e 고려
 목표 경로의 방향과 차량의 축방향을 일치시키도록 하는 조향각을 결정한다. 즉, 헤딩 오차를 없애기 위해 조향각 $$\delta$$를 헤딩 오차 $$\psi$$와 비례하게 한다.(**feedforward 항**) 가장 간단하게는,
+
 $$
 \delta = \psi
 $$
 
 #### (2) 횡방향 오차 $$e$$ 고려
 횡방향 오차를 줄이기 위한 조향각을 결정한다. 조향각을 **횡방향 오차에 비례**하여 제어하며, **차량의 속력**을 고려한다. (**feedback 항**) 고속에서는 작은 조향각을 가지도록 한다.
+
 $$
 \delta = \tan ^{-1}(\frac {ke}{v_x})
 $$
+
 $$
 \delta \in [\delta_{min}, \delta_{max}]
 $$
@@ -85,26 +88,35 @@ $$
 #### 횡방향 오차의 변화량
 
 횡방향 오차의 변화량을 속도 $$v_x$$, 헤딩 오차 $$\psi$$, 조향각 $$\delta$$로 나타내면
+
 $$
 \dot{e} = -v_x \sin(\psi-\delta)
 $$
 
 이고,
+
 $$
 \delta = \psi + \tan^{-1}(\frac{ke}{v_x})
 $$
+
 에 의해 다음과 같이 표현할 수 있다.
+
 $$
 \dot{e}=-v_x\sin(\tan^{-1}(\frac{ke}{v_x})) = \frac{-ke}{\sqrt{1+(\frac{ke}{v_x})^2}}
 $$
+
 횡방향 오차 $$e$$가 매우 작으면 오차에 관한 항은 무시 가능하므로 다음과 같이 근사화할 수 있다.
+
 $$
 \dot{e}\approx-ke
 $$
+
 이 미분방정식의 해는 지수함수 형태
+
 $$
 e^{-kt}
 $$
+
 로 얻어진다. 즉, 시간이 지남에 따라 오차가 지수적으로 감소하여 0으로 수렴하게 된다.
 
 <br>
@@ -113,25 +125,31 @@ $$
 
 #### (1) 속도 상수 추가
 기존 수식에서 속도 $$v_x$$가 0에 가까울 때 $$\tan$$ 역함수의 값이 커진다. 따라서 횡방향 오차 $$e$$가 작아도 조향각의 변화가 크게 나타나는 현상이 발생한다.
+
 $$
 \delta = \psi + \tan^{-1}(\frac{ke}{v_x})
 $$
 
 이를 완화하기 위해 분모에 양수 $$h$$를 추가하여, 속도값이 아주 작아도 분모가 0에 가까워지는 것을 방지한다.
+
 $$
 \delta = \psi + \tan^{-1}(\frac{ke}{h+v_x})
 $$
 
 #### (2) 댐핑 추가
 기존에는 조향각을 헤딩 오차와 횡방향 오차에 비례하도록 설계했다. (P 제어기)
+
 $$
 \delta = 1*\psi + \tan^{-1}(\frac{ke}{v_x})
 $$
 
 여기에 P 제어기의 응답속도를 고려하기 위해 댐핑을 추가한다. (PD 제어기) 
+
 $$
 \delta = k_p*\psi + k_d* \dot{\psi}+\tan^{-1}(\frac{ke}{v_x})
 $$
+
 PD 제어기는 응답 속도와 오버슈트를 개선한다. 
 조향각은 헤딩 오차에 $$k_p$$, 헤딩 오차의 미분에 $$k_d$$가 곱해진 형태로 결정된다. 헤딩 오차를 통해 차량의 승차감을 고려하는 횡방향 제어기를 설계한다.
 
+<br>
