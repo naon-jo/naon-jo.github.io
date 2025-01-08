@@ -16,7 +16,7 @@ timezone: Asia/Seoul
 
 title: Naon # the main title
 
-tagline: CV, blog and projects # it will display as the subtitle
+tagline: Control Engineer &<br> Self-driving SW Developer # it will display as the subtitle
 
 description: >- # used by seo meta and the atom feed
   Naon Jo Portfolio
@@ -173,7 +173,14 @@ collections:
 
 defaults:
   - scope:
-      path: "" # An empty string here means all files in the project
+      path: "_projects"
+    values:
+      layout: project
+      comments: true
+      toc: true
+      permalink: /projects/:title/
+  - scope:
+      path: "_posts" # An empty string here means all files in the project
       type: posts
     values:
       layout: post
