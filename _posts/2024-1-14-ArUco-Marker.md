@@ -278,7 +278,7 @@ plt.show()
 
 ### Reference.
 
-[1] [https://docs.opencv.org/3.1.0/d9/d6d/tutorial_table_of_content_aruco.html](https://docs.opencv.org/3.1.0/d9/d6d/tutorial_table_of_content_aruco.html)
+[1] [https://docs.opencv.org/3.1.0/d9/d6d/tutorial_table_of_content_aruco.html](https://docs.opencv.org/3.1.0/d9/d6d/tutorial_table_of_content_aruco.html) <br>
 [2] [https://github.com/GSNCodes/ArUCo-Markers-Pose-Estimation-Generation-Python](https://github.com/GSNCodes/ArUCo-Markers-Pose-Estimation-Generation-Python)
 
 <br>
