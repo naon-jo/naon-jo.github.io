@@ -103,6 +103,6 @@ Published : 2021.10<br>
 2. 초기 경로를 로버스트하게 단축하는 단계
 - 실험 결과, 제안한 알고리즘은 평균 반복 횟수와 평균 계산 시간, 평균 경로 길이 모두 RRT*, Informed RRT*보다 나은 성능을 보이며 저전력 임베디드에서 허용 가능한 수준을 보였다.
 
-[[Review] Fast, Lightweight, and Robust Path Planning for Low-power Embedded Environments](http://127.0.0.1:4000/posts/Review-Fast,-Lightweight,-and-Robust-Path-Planning-for-Low-power-Embedded-Environments/)
+[[Review] Fast, Lightweight, and Robust Path Planning for Low-power Embedded Environments](https://naon-jo.github.io/posts/Review-Fast,-Lightweight,-and-Robust-Path-Planning-for-Low-power-Embedded-Environments/)
 
 <br>

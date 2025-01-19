@@ -174,7 +174,7 @@ ShortenPath 방법으로 초기 경로를 최적화한다. ShortenPath는 충돌
 [Full PDF](https://www.dbpia.co.kr/journal/articleDetail?nodeId=NODE11024490)<br>
 <br>
 
-## 5. conclusions and future works
+## 5. Conclusions and Future Works
 
 매순간 변화하는 로봇 내비게이션 환경에서 빠르고 가볍고 로버스트한 경로 계획 알고리즘을 제안하고 다양한 실험을 통해 저전력 임베디드 시스템에서의 실현 가능성을 검증했다. 제안된 방법은 샘플링 영역에서 반복 횟수에 의존하지 않는 자체 후처리 기법을 통해 대략적인 초기 경로를 최대한 빠르게 찾고 이 초기 경로를 최적화한다. 따라서 로봇 내비게이션 환경에서 즉각적인 경로 계획에 활용하기에 적합하다.
 
