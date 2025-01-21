@@ -7,21 +7,59 @@ tags: [open-rmf]
 pin: true
 math: true
 mermaid: true
+image: https://osrf.github.io/ros2multirobotbook/images/grand_unified_diagram.png
 ---
+
+
+<br>
+
+- Docker Container에서 Open RMF 워크스페이스를 구축한다.
+- Open RMF 패키지를 설치하고, demo를 실행하여 확인한다.
 
 <br>
 
 ## 1. Installation
 
-docker에서 진행한다.
+Docker에서 진행한다.
 ```
 docker run -it -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=unix$DISPLAY --network host --name network_test osrf/ros:galactic-desktop
-만약 docker - docker 간 통신은 되는데, docker - local 간 통신은 안되면 위 코드로 컨테이너 만드심 됩니당
 ```
 
 ```
 $ docker start deli
 $ docker attach deli
+```
+
+alias_settings.sh를 작성한다.
+```
+#nano alias_settings.sh
+alias ros_domain="export ROS_DOMAIN_ID=13"
+
+alias jazzy="source /opt/ros/jazzy/setup.bash; ros_domain; echo \"ROS2 jazzy is activated.\"; echo \"ROS_DOMAIN is set to 13\""
+
+source "/opt/ros/$ROS_DISTRO/setup.bash"
+exec "$@"
+
+
+get_status() {
+	if [ -z $ROS_DOMAIN_ID ]; then
+		echo "ROS_DOMAIN_ID : 0"
+	else
+		echo "ROS_DOMAIN_ID : $ROS_DOMAIN_ID"
+	fi
+	
+	if [ -z $ROS_LOCALHOST_ONLY ]; then
+		echo "ROS_LOCALHOST_ONLY : 0"
+	else
+		echo "ROS_LOCALHOST_ONLY : $ROS_LOCALHOST_ONLY"
+	fi
+}
+
+ws_setting() {
+        jazzy
+        source ~/$1/install/setup.bash
+        echo "$1 workspace is activated."
+}
 ```
 
 ### Setup Gazebo repositories
@@ -57,7 +95,7 @@ Open RMF packages의 dependencies 중 ROS 관련이 아닌 dependencies를 다�
 # rosdep update
 ```
 
-#### Download the source code
+### Download the source code
 ROS2 워크스페이스 생성 후 demo repository를 다운로드한다.
 ```
 # mkdir -p ~/deli_rmf/src
@@ -70,11 +108,23 @@ deli_rmf
 
 ![](https://velog.velcdn.com/images/nnoa/post/9af915c4-163d-4d32-81dd-a6d9607edd9f/image.png)
 
-
 ROS2 사전 세팅이 완료됐는지 확인한다.
 ```
 # cd ~/deli_rmf
 # rosdep install --from-paths src --ignore-src --rosdistro jazzy -y
+
+All required rosdeps installed successfully
+```
+![](https://velog.velcdn.com/images/nnoa/post/51c547c9-456f-4007-af45-ebdc64aeb274/image.png)
+
+```
+# source /opt/ros/jazzy/setup.bash
+# colcon build
+```
+
+```
+# cd ~/deli_rmf
+# source install/setup.bash
 ```
 
 #### Compiling Instructions
@@ -82,11 +132,20 @@ ROS2 사전 세팅이 완료됐는지 확인한다.
 # cd ~/deli_rmf
 # source install/setup.bash
 # colcon build
+
+Summary: 55 packages finished [23min 17s]
+  19 packages had stderr output: menge_vendor nlohmann_json_schema_validator_vendor pybind11_json_vendor rmf_api_msgs rmf_building_sim_gz_plugins rmf_demos_maps rmf_fleet_adapter rmf_fleet_adapter_python rmf_robot_sim_common rmf_task rmf_task_ros2 rmf_task_sequence rmf_traffic rmf_traffic_editor rmf_traffic_editor_test_maps rmf_traffic_ros2 rmf_visualization_rviz2_plugins rmf_visualization_schedule rmf_websocket
+
 ```
+
+![](https://velog.velcdn.com/images/nnoa/post/9d2db6d9-a9a4-4c81-bd1d-0fa0869f54f4/image.png)
 
 <br>
 
-## 2. Demos
+## 2. Package 구성
+
+rmf_demos에 ```rmf_demos_tasks```와 ```rmf_demos_gz```가 존재한다.
+
 ```
 # cd ~/deli_rmf/src/demonstrations/rmf_demos
 # ls
@@ -104,49 +163,20 @@ battle_royale.launch.xml     hotel.launch.xml   office_mock_traffic_light.launch
 campus.launch.xml            include            simulation.launch.xml
 ```
 
-```
-# cd ~/deli_rmf/src/rmf
-# ls
-ament_cmake_catch2  rmf_building_map_msgs  rmf_simulation  rmf_traffic_editor  rmf_visualization_msgs
-rmf_api_msgs        rmf_internal_msgs      rmf_task        rmf_utils
-rmf_battery         rmf_ros2               rmf_traffic     rmf_visualization
-```
 
 <br>
 
 ## 3. Run RMF Demos
-### 3.1. Launch 실행
-airport_terminal에 대한 launch 파일을 실행하면 Gazebo GUI와 rviz2가 실행된다. 
+
+airport terminal demo를 실행하면 Gazebo와 rivz2가 실행된다.
 ```
 # ros2 launch rmf_demos_gz airport_terminal.launch.xml
 ```
 
-Gazebo GUI
-
-![](https://velog.velcdn.com/images/nnoa/post/ca880e1d-9eac-4022-b23f-3a97015317ed/image.png)
+Gazebo
+![](https://velog.velcdn.com/images/nnoa/post/4d49e722-d82c-4e36-9088-74898845116a/image.png)
 
 rviz2
+![](https://velog.velcdn.com/images/nnoa/post/bc5d3bbc-dca4-49e8-8c91-72e366a47702/image.png)
 
-![](https://velog.velcdn.com/images/nnoa/post/ae8bd8dc-5586-4222-b134-ad64801d06a8/image.png)
 
-### 3.2. Task Request
-Task를 요청할 때, 사용자가 로봇의 이름을 지정하는 것이 아니라 RMF가 최적의 로봇을 계산하여 Task를 할당한다.
-
-RMF가 지원하는 Task 종류는 다음과 같다.
-- Loop Task
-```
-ros2 run rmf_demos_tasks dispatch_loop -s s07 -f n12 -n 3 --use_sim_time
-```
-
-- Delivery Task <br>
-배달은 일반적으로 픽업 위치로 향하여 품목을 적재한 다음 품목을 하역하는 하역 위치로 이동하는 과정을 포함한다. 픽업 및 하역 장소에서 모바일 로봇을 로봇팔, 컨베이어 또는 다른 자동화 시스템과 인터페이스할 수 있다.
-```
-ros2 run rmf_demos_tasks dispatch_delivery -p mopcart_pickup -pd mopcart_dispenser -d spill -di mopcart_collector --use_sim_time
-```
-
-- Clean Task
-```
-ros2 run rmf_demos_tasks dispatch_delivery -p mopcart_pickup -pd mopcart_dispenser -d spill -di mopcart_collector --use_sim_time
-```
-
-<br>

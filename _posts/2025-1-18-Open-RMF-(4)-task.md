@@ -1,12 +1,13 @@
 ---
-title: "Open-RMF (3) rmf_task"
+title: "Open-RMF (4) rmf_task"
 description: "How tasks are defined, assigned, and executed in Open-RMF"
-date: 2025-1-17 18:00:00 +0800
+date: 2025-1-18 18:00:00 +0800
 categories: [Study, Open-RMF]
 tags: [open-rmf]
 pin: true
 math: true
 mermaid: true
+image: https://osrf.github.io/ros2multirobotbook/images/rmf_core/rmf_bidding.png
 ---
 
 <br>
@@ -106,10 +107,5 @@ Event는 Task 내에서 특정 행동이나 결과를 달성하는 개별 단위
 ```description```의 스키마는 [rmf_fleet_adapter](https://github.com/open-rmf/rmf_ros2/tree/main/rmf_fleet_adapter/schemas)에 정의되어 있다.
 
 실제 로봇에 이러한 Event를 명령하는 방법, 즉 ```active component```는 ```rmf_fleet_adapter```에 정의되어 있다.
-
-<br>
-
-## 5. Custom Task
-[ROSCon2022: How custom tasks are defined, assigned, and executed in Open-RMF](http://download.ros.org/downloads/roscon/2022/How%20custom%20tasks%20are%20defined,%20assigned,%20and%20executed%20in%20Open-RMF.pdf)
 
 <br>
