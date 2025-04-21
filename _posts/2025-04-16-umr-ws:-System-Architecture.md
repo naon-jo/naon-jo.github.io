@@ -8,7 +8,7 @@ pin: true
 math: true
 mermaid: true
 image:
-    path: "https://github.com/user-attachments/assets/07ebf890-1a8e-4eb9-9b2a-085cb4eb7552"
+    path: "https://velog.velcdn.com/images/nnoa/post/76a01182-968b-44a6-a1fc-70046e13917e/image.png"
 ---
 
 <br>
@@ -16,7 +16,7 @@ image:
 
 ## 1. Architecture
 
-<img src="https://github.com/user-attachments/assets/07ebf890-1a8e-4eb9-9b2a-085cb4eb7552"/>
+<img src="https://velog.velcdn.com/images/nnoa/post/76a01182-968b-44a6-a1fc-70046e13917e/image.png"/>
 
 
 Task Manager는 task를 의미있는 실행 단위인 phase로 해석하고, Goal Executor는 phase를 실제 수행 가능한 명령으로 변환하여 실행한다. 
